@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Xml.Serialization;
 
 public class AdventureGame
@@ -7,6 +7,7 @@ public class AdventureGame
     public static string goatName = " ";
     public static string horseName = " ";
     public static string choice = " ";
+    public static double money = 0;
     public static void Main(String[] args)
     {
         Console.WriteLine("Welcome to Adventure Game, Traveller!");
@@ -26,14 +27,14 @@ public class AdventureGame
         Console.WriteLine("Your home is tucked away in a dark, quiet corner of The Forest. Inside, you have a ");
         Console.WriteLine("collection of souvenirs from your previous adventures, various CDs, DVDs and video games lying around ");
         Console.WriteLine("on the floor and plenty of components, textiles and tools from all of your renovation and creative projects. ");
-        Console.WriteLine("Everyting and everyone you've ever needed is here. Accompanied soley by a goat named... crap, what's his name?");
+        Console.WriteLine("Everything and everyone you've ever needed is here. Accompanied soley by a goat named... crap, what's his name?");
         Console.WriteLine("Enter your goat's name like you did with your own just now. ");
         goatName = Console.ReadLine();
         Console.WriteLine("Oh, yeah, it's coming back to me now. Accompanied solely by a petite goat named {0} and a dark, tall horse named... erm...errr...", goatName);
         Console.WriteLine("Help me out here! Gimme a name!");
         horseName = Console.ReadLine();
         Console.WriteLine("Aaaaaaaah, yes, {0}. Look, it's been a while and I'm not good with names, ok?! Anyways, accompanied solely by a ", horseName);
-        Console.WriteLine("petite goat named {0} and a dark horse named {1}, you live contently life at the cottage. It's never lonely, nothing bad ever", goatName, horseName);
+        Console.WriteLine("petite goat named {0} and a dark horse named {1}, you live contently at the cottage. It's never lonely, nothing bad ever", goatName, horseName);
         Console.WriteLine("happens. It's plain, but perfect. ");
         Console.WriteLine("");
         Console.WriteLine("Hey, remember when I said that everything you've ever needed was here? Well, that was a slight exaggeration, it seems.");
@@ -59,5 +60,17 @@ public class AdventureGame
         Console.WriteLine("you lose it, or bring some extra for...some reason?");
         Console.WriteLine("Bring enough / Bring extra");
         choice = Console.ReadLine();
+        if(choice == "Bring extra")
+        {
+            Console.WriteLine("You dig out an extra... £10. Now you're ready for anything!");
+            money = money + 12.50;
+        }
+        else
+        {
+            Console.WriteLine("You play it safe and stick to the £2.50.");
+            money = money + 2.50;
+        }
+        Console.WriteLine("You pull on a shirt and thick-soled boots before fitting the saddle on {0}. You look totally kick-ass. You also plop {1} in a pouch so he doesn't feel left out.", horseName, goatName);
+        Console.WriteLine("Take one final look at the cottage, {0}- it might be a while until you return... (oooOOOooo)", playerName);
     }
 }

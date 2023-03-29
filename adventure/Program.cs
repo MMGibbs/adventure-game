@@ -7,8 +7,13 @@ public class AdventureGame
     public static string goatName = " ";
     public static string horseName = " ";
     public static string choice = " ";
-    public static double money = 0;
-    public static void Main(String[] args)
+    public static double money = 0.00;
+    public static bool hasSeenPoster = false;
+    public static bool hasSeenScratches = false;
+    public static bool hasCompass = false;
+    public static bool hasRope = false;
+    public static bool hasSandwiches = false;
+     public static void Main(String[] args)
     {
         Console.WriteLine("Welcome to Adventure Game, Traveller!");
         Console.WriteLine("Actually, what's your name? So I don't have to call you 'Traveller' the whole time.");
@@ -22,11 +27,11 @@ public class AdventureGame
 
     static void opening()
     {
-        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~opening~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ opening ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         Console.WriteLine("");
-        Console.WriteLine("Your home is tucked away in a dark, quiet corner of The Forest. Inside, you have a ");
-        Console.WriteLine("collection of souvenirs from your previous adventures, various CDs, DVDs and video games lying around ");
-        Console.WriteLine("on the floor and plenty of components, textiles and tools from all of your renovation and creative projects. ");
+        Console.WriteLine("Your home is tucked away in a dark, quiet corner of The Forest. Inside, you've got ");
+        Console.WriteLine("collections of souvenirs from old adventures, various CDs, DVDs and video games lying around ");
+        Console.WriteLine("and plenty of components, textiles and tools from all of your various side projects. ");
         Console.WriteLine("Everything and everyone you've ever needed is here. Accompanied soley by a goat named... crap, what's his name?");
         Console.WriteLine("Enter your goat's name like you did with your own just now. ");
         goatName = Console.ReadLine();
@@ -70,7 +75,181 @@ public class AdventureGame
             Console.WriteLine("You play it safe and stick to the £2.50.");
             money = money + 2.50;
         }
-        Console.WriteLine("You pull on a shirt and thick-soled boots before fitting the saddle on {0}. You look totally kick-ass. You also plop {1} in a pouch so he doesn't feel left out.", horseName, goatName);
+        Console.WriteLine("You pull on a shirt and some thick-soled boots before fitting the saddle on {0}. You look totally kick-ass. You also plop {1} in your pouch so he doesn't feel left out.", horseName, goatName);
         Console.WriteLine("Take one final look at the cottage, {0}- it might be a while until you return... (oooOOOooo)", playerName);
+        Console.WriteLine("");
+        journeyToMarket();
+    }
+
+    static void journeyToMarket()
+    {
+        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ to the market ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Console.WriteLine("");
+        Console.WriteLine("The Forest is quite a tranquil place to live. That's why you love it so much. Thoughout your years spent here, you've never caught more than a couple of people");
+        Console.WriteLine("wandering about. The only noise you ever here is the soft sound of branches swaying in the breeze or of small critters scuttering about in the leaflitter.");
+        Console.WriteLine("Today is different, though. You've travelled this route hundreds of times, so you're pretty certain something's up. It's... unnverving... but you can't quite put your");
+        Console.WriteLine("finger on what has changed. ");
+        Console.WriteLine("");
+        Console.WriteLine("There is still about fifteen minutes left of the journey before you get to the village. Do you continue to where you were going or stop and have a poke around?");
+        Console.WriteLine("Continue / Poke around");
+        choice = Console.ReadLine();
+        if(choice == "Poke around")
+        {
+            Console.WriteLine("Curiosity never hurt anyone, right? And you know this place pretty well. Should be fine to have a looksie. After dismounting {0}, you creep around, studying the ground", horseName);
+            Console.WriteLine("carefully for inconsistencies. Strangely enough, you do notice something. There seems to be... litter. Who could have left it? There are a few tins of food, some foil, ");
+            Console.WriteLine("and even some rope. After searching the trees nearby, you notice there are some scratch marks on the bark. Was there a struggle? Press any key to continue. ", horseName);
+            hasSeenScratches = true;
+            Console.ReadLine();
+            Console.WriteLine("Next you check the lake. You approach it hesitantly, afraid of what you might discover. ");
+            Console.WriteLine("");
+            Console.WriteLine("Your heart almost stops as you catch sight of something floating in the water, but after closer inspection you realise it is a piece of paper. Do you want to pick up the paper?");
+            Console.WriteLine("Pick up piece of paper / Leave");
+            choice = Console.ReadLine();
+            if(choice == "Pick up piece of paper")
+            {
+                hasSeenPoster= true;
+                Console.WriteLine("You pick it up, obviously. Who wouldn't? ");
+                Console.WriteLine("It's a wanted- no, a missing poster. There is an illustration of a girl on the front, unnamed, with long, dark, matted hair. Freckles are scattered across her dark brown skin  ");
+                Console.WriteLine("like stars, and a birthmark covers the right of her face. There's a long, thin scar that cuts across one her eyes, too. I wonder where it came from.");
+                Console.WriteLine("");
+                Console.WriteLine("She is stunning. Your heart breaks at the thought of what she could be going through right now, alone, scared. You think about what all of those hundreds of missing girls could");
+                Console.WriteLine("be going through right now. ");
+                Console.WriteLine("");
+                Console.WriteLine("You pull yourself out of your thoughts and put the poster in your pocket. There's an address on there, too. Maybe you could turn up and ask for some more information. For now, though,");
+                Console.WriteLine("you get back on {0} and continue towards the market. ", horseName);
+                marketVisit();
+            }
+            else
+            {
+                Console.WriteLine("This is totally not your business. All you need right now is a milkshake, not an adventure. You get back on {0} and continue towards the market. ", horseName);
+                marketVisit();
+            }
+        }
+        else
+        {
+            Console.WriteLine("It's probably nothing. And if it isn't nothing, it's porbably dangerous. You get back on {0} and continue towards the market. Better safe than sorry. ", horseName);
+            marketVisit();
+        }
+    }
+
+    static void marketVisit()
+    {
+        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ off to the shops! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Console.WriteLine("");
+        Console.WriteLine("Finally, you have arrived, {0}! You get off and leave {1} at a stable but keep {2} with you in his pouch. Time to go shopping. You've got £{3} with you right", playerName, horseName, goatName, money);
+        Console.WriteLine("now. You could go straight to the milk, or check around at what else is available. Your choice.");
+        Console.WriteLine("Buy milk / Browse");
+        choice = Console.ReadLine();
+        if(choice == "Browse") { browse(); }
+        else
+        {
+            money = money - 2.50;
+            Console.WriteLine("All you can think about right now is that sweet milkshake. You book it to the stall and exchange your money for some of that white cow juice.  ");
+            Console.WriteLine("You have £{0} left. Do you want to look around now?", money);
+            Console.WriteLine("Look around / Leave");
+            choice = Console.ReadLine();
+            if(choice == "Look around") { browse(); }
+        }
+
+
+
+
+
+        static void browse()
+        {
+            Console.WriteLine("You've got time. The milk ain't got legs, it's not going anywhere. You take a look around. ");
+            Console.WriteLine("On one side of the street you can see a couple of things for sale. There is a compass for £3.00, some rope for £2.80 and some sandwiches for 50p. ");
+            if (hasSeenPoster == true)
+            {
+                Console.WriteLine("Of course, you might want to see if anyone around here knows something about the girl on that poster you found, or what-slash-who made those");
+                Console.WriteLine("scratch marks behind or left that stuff. ");
+                Console.WriteLine("Do you want to make a purchase? Or maybe do some detective work?");
+                Console.WriteLine("Compass / Rope / Sandwiches / Ask around about the scratches and missing girl / Go to address on poster");
+            }
+            else if (hasSeenScratches == true)
+            {
+                Console.WriteLine("Of course you might want to see if anyone knows anything about all that stuff that got left behind in The Forest or what-slash-who made those");
+                Console.WriteLine("scratch marks.");
+                Console.WriteLine("Do you want to make a purchase? Or maybe do some detective work?");
+                Console.WriteLine("Compass / Rope / Sandwiches / Ask around about the scratches");
+            }
+            else
+            {
+                Console.WriteLine("Do you want to make a purchase?");
+                Console.WriteLine("Compass / Rope / Sandwiches / Keep money");
+
+            }
+            choice = Console.ReadLine();
+            purchases();
+        }
+
+
+
+
+        static void purchases()
+        {
+            while(choice != "Stop shopping")
+            {
+                if (choice == "Compass" && hasCompass == false)
+                {
+                    double possibleMoney = money - 3.00;
+                    if(possibleMoney > 0)
+                    {
+                        money = money - 3.00;
+                        Console.WriteLine("You buy the compass. You tuck it away on your coat and say thanks to the shopkeeper. ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have enough money for this right now. ");
+                    }
+                    
+                }
+                else if (choice == "Compass")
+                {
+                    Console.WriteLine("You already have this. ");
+                }
+                else if (choice == "Rope" && hasRope == false)
+                {
+                    double possibleMoney = money - 2.80;
+                    if (possibleMoney > 0)
+                    {
+                        money = money - 2.80;
+                        Console.WriteLine("You buy the rope. You tuck it away on your coat and say thanks to the shopkeeper. ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have enough money for this right now. ");
+                    }
+                }
+                else if(choice == "Rope")
+                {
+                    Console.WriteLine("You already have this. ");
+                }
+                else if (choice == "Sandwiches" && hasSandwiches == false)
+                {
+                    double possibleMoney = money - 0.50;
+                    if (possibleMoney > 0)
+                    {
+                        money = money - 0.50;
+                        Console.WriteLine("You buy the sandwiches. You tuck them away on your coat and say thanks to the shopkeeper. ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have enough money for this right now. ");
+                    }
+                    
+                }
+                else if (choice == "Sandwiches")
+                {
+                    Console.WriteLine("You already have these. ");
+                }
+                Console.WriteLine("You have £{0} left over. Would you like to buy anything else? Bare in mind that you can only purchase any of these items once. ", money);
+                Console.WriteLine("Compass / Rope / Sandwiches / Stop shopping");
+                if(choice != "Compass" && choice != "Rope" && choice != "Sandwiches")
+                {
+                    choice = "Stop shopping"; 
+                }
+            }
+        }
     }
 }

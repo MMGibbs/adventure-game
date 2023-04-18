@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 public class AdventureGame
 {
-    public static string playerName = " ";
+    public static string playerName = "Timmy";
     public static string goatName = " ";
     public static string horseName = " ";
     public static string choice = " ";
@@ -34,8 +34,8 @@ public class AdventureGame
         Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ opening ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         Console.WriteLine("");
         Console.WriteLine("Your home is tucked away in a dark, quiet corner of The Forest. Inside, you've got ");
-        Console.WriteLine("collections of souvenirs from old adventures, various CDs, DVDs and video games lying around ");
-        Console.WriteLine("and plenty of components, textiles and tools from all of your various side projects. ");
+        Console.WriteLine("collections of souvenirs from old holidays, various CDs, DVDs and video games as well as ");
+        Console.WriteLine("plenty of components, textiles and tools from all of your various side projects. ");
         Console.WriteLine("Everything and everyone you've ever needed is here. Accompanied soley by a goat named... crap, what's his name?");
         Console.WriteLine("Enter your goat's name like you did with your own just now. ");
         goatName = Console.ReadLine();
@@ -79,7 +79,7 @@ public class AdventureGame
             Console.WriteLine("You play it safe and stick to the £2.50.");
             money = money + 2.50;
         }
-        Console.WriteLine("You pull on a shirt and some thick-soled boots before fitting the saddle on {0}. You look totally kick-ass. You also plop {1} in your pouch so he doesn't feel left out.", horseName, goatName);
+        Console.WriteLine("You pull on a thin, viridescent shirt, some trousers equipped with multiple decently-sized pockets and some thick-soled boots before fitting the saddle on {0}. You look totally kick-ass. You also plop {1} in your pouch so he doesn't feel left out.", horseName, goatName);
         Console.WriteLine("Take one final look at the cottage, {0}- it might be a while until you return... (oooOOOooo)", playerName);
         Console.WriteLine("");
         journeyToMarket();
@@ -101,9 +101,8 @@ public class AdventureGame
         {
             Console.WriteLine("Curiosity never hurt anyone, right? And you know this place pretty well. Should be fine to have a looksie. After dismounting {0}, you creep around, studying the ground", horseName);
             Console.WriteLine("carefully for inconsistencies. Strangely enough, you do notice something. There seems to be... litter. Who could have left it? There are a few tins of food, some foil, ");
-            Console.WriteLine("and even some rope. After searching the trees nearby, you notice there are some scratch marks on the bark. Was there a struggle? Press any key to continue. ", horseName);
+            Console.WriteLine("and even some rope. After searching the trees nearby, you notice there are some scratch marks on the bark. Was there a struggle? ", horseName);
             hasSeenScratches = true;
-            Console.ReadLine();
             Console.WriteLine("Next you check the lake. You approach it hesitantly, afraid of what you might discover. ");
             Console.WriteLine("");
             Console.WriteLine("Your heart almost stops as you catch sight of something floating in the water, but after closer inspection you realise it is a piece of paper. Do you want to pick up the paper?");
@@ -114,7 +113,7 @@ public class AdventureGame
                 hasSeenPoster = true;
                 Console.WriteLine("You pick it up, obviously. Who wouldn't? ");
                 Console.WriteLine("It's a wanted- no, a missing poster. There is an illustration of a girl on the front, unnamed, with long, dark, matted hair. Freckles are scattered across her dark brown skin  ");
-                Console.WriteLine("like stars, and a birthmark covers the right of her face. There's a long, thin scar that cuts across one her eyes, too. I wonder where it came from.");
+                Console.WriteLine("like stars, and a birthmark covers the right of her face. There's a long, thin scar that cuts across one of her eyes, too. I wonder where it came from.");
                 Console.WriteLine("");
                 Console.WriteLine("She is stunning. Your heart breaks at the thought of what she could be going through right now, alone, scared. ");
                 Console.WriteLine("");
@@ -130,7 +129,7 @@ public class AdventureGame
         }
         else
         {
-            Console.WriteLine("It's probably nothing. And if it isn't nothing, it's porbably dangerous. You get back on {0} and continue towards the market. Better safe than sorry. ", horseName);
+            Console.WriteLine("It's probably nothing. And if it isn't nothing, it's probably dangerous. You get back on {0} and continue towards the market. Better safe than sorry. ", horseName);
             marketVisit();
         }
     }
@@ -147,6 +146,7 @@ public class AdventureGame
         else
         {
             money = money - 2.50;
+            hasMilk = true;
             Console.WriteLine("All you can think about right now is that sweet milkshake. You book it to the stall and exchange your money for some of that white cow juice.  ");
             Console.WriteLine("You have £{0} left. Do you want to look around now?", money);
             Console.WriteLine("Look around / Leave");
@@ -274,11 +274,27 @@ public class AdventureGame
                 if(hasSeenScratches == true && hasSeenPoster == true)
                 {
                     Console.WriteLine("Ask around about the scratches and missing girl / Go to address on poster / Leave");
+                    choice = Console.ReadLine();
+                    if(choice == "Ask around about the scratches and missing girl"){
+                        askQuestionsAtTheMarket();
+                    }
+                    else if(choice == "Go to address on poster"){
+                        goToAddressOnPoster();
+                    }
+                    else{
+                        afterMarket();
+                    }
                 }
                 else if(hasSeenScratches == true)
                 {
                     Console.WriteLine("Ask around about the scratches / Leave");
                     choice = Console.ReadLine();
+                    if(choice == "Ask around about the scratches"){
+                        askQuestionsAtTheMarket();
+                    }
+                    else{
+                        afterMarket();
+                    }
 
                 }
                 else
@@ -295,6 +311,16 @@ public class AdventureGame
                 {
                     Console.WriteLine("You've still got a chance to ask about anything you found. Or you could just leave. ");
                     Console.WriteLine("Ask around about the scratches and missing girl / Go to address on poster / Leave");
+                    choice = Console.ReadLine();
+                    if(choice == "Ask around about the scratches and missing girl"){
+                        askQuestionsAtTheMarket();
+                    }
+                    else if(choice == "Go to address on poster"){
+                        goToAddressOnPoster();
+                    }
+                    else{
+                        afterMarket();
+                    }
                 }
                 else if (hasSeenScratches == true)
                 {
@@ -303,7 +329,7 @@ public class AdventureGame
                     choice = Console.ReadLine();
                     if(choice == "Ask about the scratches")
                     {
-                        //what
+                        askQuestionsAtTheMarket();
                     }
                     else
                     {
@@ -318,6 +344,17 @@ public class AdventureGame
             }
         }
     }
+
+
+    static void askQuestionsAtTheMarket()
+    {
+        Console.WriteLine("Time to put on your detective hat, £{playerName}!");
+    }
+    
+    static void goToAddressOnPoster(){
+        
+    }
+
 
     static void afterMarket()
     {

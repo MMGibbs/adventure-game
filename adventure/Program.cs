@@ -420,3 +420,6 @@ public class AdventureGame
 
     }
 }
+
+// maya is best girl
+// guitra grrls r hottt

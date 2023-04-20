@@ -153,16 +153,20 @@ public class AdventureGame
                 Thread.Sleep(2500);
                 Console.WriteLine("... the suspense is killing me...");
                 Thread.Sleep(2500);
-                Console.WriteLine("It's a wanted- no, a missing poster, specked with a dark, brownish fluid. There is an illustration of a girl on the front, unnamed, with long, dark, matted hair. Freckles are scattered across her dark brown skin  ");
-                Console.WriteLine("like stars, and a birthmark covers the right of her face. There's a long, thin scar that cuts across one of her eyes, too. I wonder where it came from.");
+                Console.WriteLine("It's a wanted- no, a missing poster, specked with a dark, brownish fluid. There is an illustration of a girl on the front, unnamed, with long, dark, matted hair. Freckles are ");
+                Console.WriteLine("scattered across her dark brown skin like stars, and a birthmark covers the right of her face. There's a long, thin scar that cuts across one of her eyes, too. I wonder where it came from.");
+                Thread.Sleep(8000);
                 Console.WriteLine("");
-                Thread.Sleep(2500);
-                Console.WriteLine("She is stunning. Your heart breaks at the thought of what she could be going through right now, alone. Scared. Lost. No-one deserves this.");
-                Console.WriteLine("");
+                Console.WriteLine("She is stunning. ");
                 Thread.Sleep(4000);
+                Console.WriteLine("Your heart breaks at the thought of what she could be going through right now, alone. Scared. Lost. No-one deserves this.");
+                Console.WriteLine("");
+                Thread.Sleep(5000);
                 Console.WriteLine("You pull yourself out of your thoughts and put the poster in your pocket. There's an address on there, too. Maybe you could turn up and ask for some more information. For now, though,");
                 Console.WriteLine("you get back on {0} and continue towards the market. ", horseName);
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
+                Console.WriteLine("Press Enter to head to the next bit. ");
+                Console.ReadLine();
                 marketVisit();
             }
             else
@@ -185,7 +189,6 @@ public class AdventureGame
         Console.Clear();
         Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ off to the shops! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         Thread.Sleep(2500);
-        Console.WriteLine("");
         Console.WriteLine("Finally, you have arrived, {0}! You get off and leave {1} at a stable but keep {2} with you in his pouch. Time to go shopping. You've got £{3} with you right", playerName, horseName, goatName, money);
         Console.WriteLine("now. You could go straight to the milk, or check around at what else is available. Your choice.");
         Thread.Sleep(1000);
@@ -197,6 +200,7 @@ public class AdventureGame
             money = money - 2.50;
             hasMilk = true;
             Console.WriteLine("All you can think about right now is that sweet milkshake. You book it to the stall and exchange your money for some of that gorgeous white cow juice. ");
+            Thread.Sleep(3000);
             Console.WriteLine($"You have £{money: 0.00} left. Do you want to look around now?");
             Thread.Sleep(1000);
             Console.WriteLine("Look around / Leave");
@@ -204,7 +208,11 @@ public class AdventureGame
             if (choice == "Look around") { browse(); }
             else
             {
-
+                Console.WriteLine("You judge that it is best to head straight home. Boring, but okAy i gUeSs uR tHe pLaYeR");
+                Thread.Sleep(3000);
+                Console.WriteLine("Press Enter to continue to the next part. ");
+                Console.ReadLine();
+                afterMarket();
             }
         }
 
@@ -215,24 +223,31 @@ public class AdventureGame
         static void browse()
         {
             Console.WriteLine("You've got time. The milk ain't got legs, it's not going anywhere. You take a look around. ");
+            Thread.Sleep(3000);
             Console.WriteLine("On one side of the street you can see a couple of things for sale. There is a compass for £3.00, some rope for £2.80 and some sandwiches for 50p. ");
+            Thread.Sleep(6000);
             if (hasSeenPoster == true)
             {
                 Console.WriteLine("Of course, you might want to see if anyone around here knows something about the girl on that poster you found, or what-slash-who made those");
                 Console.WriteLine("scratch marks behind or left that stuff. ");
+                Thread.Sleep(6000);
                 Console.WriteLine("Do you want to make a purchase? Or maybe do some detective work?");
+                Thread.Sleep(1000);
                 Console.WriteLine("Compass / Rope / Sandwiches / Ask around about the scratches and missing girl / Go to address on poster");
             }
             else if (hasSeenScratches == true)
             {
                 Console.WriteLine("Of course you might want to see if anyone knows anything about all that stuff that got left behind in The Forest or what-slash-who made those");
                 Console.WriteLine("scratch marks.");
+                Thread.Sleep(6000);
                 Console.WriteLine("Do you want to make a purchase? Or maybe do some detective work?");
+                Thread.Sleep(1000);
                 Console.WriteLine("Compass / Rope / Sandwiches / Ask around about the scratches");
             }
             else
             {
                 Console.WriteLine("Do you want to make a purchase?");
+                Thread.Sleep(1000);
                 Console.WriteLine("Compass / Rope / Sandwiches / Keep money");
 
             }
@@ -241,9 +256,13 @@ public class AdventureGame
             {
                 purchases();
             }
+            else if(choice != "Go to address on poster")
+            {
+                askQuestionsAtTheMarket();
+            }
             else
             {
-
+                afterMarket();
             }
         }
 
@@ -310,7 +329,9 @@ public class AdventureGame
                 {
                     Console.WriteLine("You already have these. ");
                 }
+                Thread.Sleep(3000);
                 Console.WriteLine($"You have £{money:0.00} left over. Would you like to buy anything else? Bare in mind that you can only purchase any of these items once. ");
+                Thread.Sleep(1000);
                 Console.WriteLine("Compass / Rope / Sandwiches / Stop shopping");
                 choice = Console.ReadLine();
                 if (choice != "Compass" && choice != "Rope" && choice != "Sandwiches")
@@ -321,20 +342,33 @@ public class AdventureGame
             if (hasMilk == true)
             {
                 Console.WriteLine("Now you've finished with your shopping spree, you have a chance to check out any of the clues you've discovered. Or you can just leave.");
+                Thread.Sleep(1000);
                 if (hasSeenScratches == true && hasSeenPoster == true)
                 {
                     Console.WriteLine("Ask around about the scratches and missing girl / Go to address on poster / Leave");
                     choice = Console.ReadLine();
                     if (choice == "Ask around about the scratches and missing girl")
                     {
+                        Console.WriteLine("Time to put on your detective hat! ");
+                        Thread.Sleep(3000);
+                        Console.WriteLine("Press Enter to continue. ");
+                        Console.ReadLine();
                         askQuestionsAtTheMarket();
                     }
                     else if (choice == "Go to address on poster")
                     {
+                        Console.WriteLine("Time to put on your detective hat! ");
+                        Thread.Sleep(3000);
+                        Console.WriteLine("Press Enter to continue. ");
+                        Console.ReadLine();
                         goToAddressOnPoster();
                     }
                     else
                     {
+                        Console.WriteLine("Time to get going, then. There isn't anything left to do here. ");
+                        Thread.Sleep(3000);
+                        Console.WriteLine("Press Enter to continue. ");
+                        Console.ReadLine();
                         afterMarket();
                     }
                 }
@@ -344,10 +378,18 @@ public class AdventureGame
                     choice = Console.ReadLine();
                     if (choice == "Ask around about the scratches")
                     {
+                        Console.WriteLine("Time to put on your detective hat! ");
+                        Thread.Sleep(3000);
+                        Console.WriteLine("Press Enter to continue. ");
+                        Console.ReadLine();
                         askQuestionsAtTheMarket();
                     }
                     else
                     {
+                        Console.WriteLine("Time to get going, then. ");
+                        Thread.Sleep(3000);
+                        Console.WriteLine("Press Enter to continue. ");
+                        Console.ReadLine();
                         afterMarket();
                     }
 
@@ -391,6 +433,10 @@ public class AdventureGame
                     }
                     else
                     {
+                        Console.WriteLine("Time to go then. Boring, but okAy i gUeSs uR tHe pLaYeR");
+                        Thread.Sleep(3000);
+                        Console.WriteLine("Press Enter to proceed. ");
+                        Console.ReadLine();
                         afterMarket();
                     }
                 }
@@ -406,7 +452,7 @@ public class AdventureGame
 
     static void askQuestionsAtTheMarket()
     {
-        Console.WriteLine("Time to put on your detective hat, £{playerName:}!");
+        Console.WriteLine($"Time to put on your detective hat, £{playerName}!");
     }
 
     static void goToAddressOnPoster()
@@ -419,7 +465,4 @@ public class AdventureGame
     {
 
     }
-}
-
-// maya is best girl
-// guitra grrls r hottt
+} 

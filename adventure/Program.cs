@@ -64,7 +64,7 @@ public class AdventureGame
         Thread.Sleep(3000);
         Console.WriteLine("Forget the strawberries- the only taste in your mouth now is bitter disappointment. ");
         Thread.Sleep(3000);
-        Console.WriteLine("No worry! There is a solution! Three miles west, there is a small market. It should have milk, along with many");
+        Console.WriteLine("No worry! There is a solution! Three miles west, there is a small market. It should have milk, along with any");
         Console.WriteLine("other supplies and accessories you may desire. On {0}back, it should be around a forty-five minute journey. You up for it? ", horseName);
         Thread.Sleep(1000);
         Console.WriteLine("Yes / No");
@@ -159,7 +159,7 @@ public class AdventureGame
                 Console.WriteLine("");
                 Console.WriteLine("She is stunning. ");
                 Thread.Sleep(4000);
-                Console.WriteLine("Your heart breaks at the thought of what she could be going through right now, alone. Scared. Lost. No-one deserves this.");
+                Console.WriteLine("Your heart breaks at the thought of where she could be right now, alone. Scared. Lost. No-one deserves this.");
                 Console.WriteLine("");
                 Thread.Sleep(5000);
                 Console.WriteLine("You pull yourself out of your thoughts and put the poster in your pocket. There's an address on there, too. Maybe you could turn up and ask for some more information. For now, though,");
@@ -171,7 +171,7 @@ public class AdventureGame
             }
             else
             {
-                Console.WriteLine("This is totally not your business. All you need right now is a milkshake, not a mystery. You get back on {0} and continue towards the market. ", horseName);
+                Console.WriteLine("This is totally not your business. All you need right now is a milkshake, not a whole-ass mystery. You get back on {0} and continue towards the market. ", horseName);
                 Thread.Sleep(1000);
                 marketVisit();
             }
@@ -208,7 +208,7 @@ public class AdventureGame
             if (choice == "Look around") { browse(); }
             else
             {
-                Console.WriteLine("You judge that it is best to head straight home. Boring, but okAy i gUeSs uR tHe pLaYeR");
+                Console.WriteLine("You judge that it is best to head straight home. Boring, but okAy i gUeSs uR tHe pLaYeR fiNe iF yOu wAnT tO bE boRinG");
                 Thread.Sleep(3000);
                 Console.WriteLine("Press Enter to continue to the next part. ");
                 Console.ReadLine();
@@ -453,6 +453,26 @@ public class AdventureGame
     static void askQuestionsAtTheMarket()
     {
         Console.WriteLine($"Time to put on your detective hat, £{playerName}!");
+        Console.WriteLine("The market is bustling with activity. The streets are scattered with vendors and hagglers, and the roads are filled with children playfully running around with eachother. ");
+            Thread.Sleep(4000);
+            Console.WriteLine("Across the street, an old women is stood with her head buried in a chunky book. The cover is damp and the ink is smudged, concealing its title from view. Her crooked nose sticks out at an angle, dripping with snot, and her mouth hangs slack, overflowing with drool.");
+                Thread.Sleep(3500);
+                Console.WriteLine("");
+                Console.WriteLine("Could she know anything?");
+        if(hasSeenPoster == true){
+            hasAllClues();
+        }
+        else{
+            hasOneClue();
+        }
+    }
+    
+    static void hasAllClues(){
+        
+    }
+    
+    static void hasOneClue(){
+        
     }
 
     static void goToAddressOnPoster()
